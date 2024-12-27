@@ -3,6 +3,17 @@
 ## Overview
 This repository contains scripts to automate the testing process for Java files. The automation process ensures all Java files are tested individually by renaming their public class and references to "Main," compiling, and running them with a single test file (`MainTest.java`). This setup is designed for projects where Java files are tested independently against a single unit test.
 
+
+## Importatn Notes
+- Ensure `MainTest.java` is the only test file in the directory, and it **must** be named exactly `MainTest.java` for the script to work correctly. This file is assumed to contain the necessary unit tests for all Java files.
+- All other Java files can have arbitrary names and can be located anywhere within the directory or its subdirectories; they will be processed and renamed automatically.
+- If you encounter permission issues on Linux/Mac, make the script executable using:
+  ```bash
+  chmod +x script.sh
+  ```
+
+- The Main.java and MainTest.java file should be self contained and should not import any other classes from other files. This is to ensure that the script works correctly.
+
 ## Requirements
 Before running the scripts, ensure the following dependencies are installed:
 
@@ -87,13 +98,7 @@ The directory structure can look like this before running the script:
      ./script.sh
      ```
 
-## Notes
-- Ensure `MainTest.java` is the only test file in the directory, and it **must** be named exactly `MainTest.java` for the script to work correctly. This file is assumed to contain the necessary unit tests for all Java files.
-- All other Java files can have arbitrary names and can be located anywhere within the directory or its subdirectories; they will be processed and renamed automatically.
-- If you encounter permission issues on Linux/Mac, make the script executable using:
-  ```bash
-  chmod +x script.sh
-  ```
+
 
 ## Output
 The script provides:
