@@ -7,15 +7,21 @@ This repository contains scripts to automate the testing process for Java files.
 - When refering to `MainTest.jav` I am referring to the file that contains the unit tests for the Java files.
 - When refering to `Main.java` I am referring to the file that contains the main code that is being tested.
 
-## Importatn Notes
+## Importatn Notes and Work
 - Ensure `MainTest.java` is the only test file in the directory, and it **must** be named exactly `MainTest.java` for the script to work correctly. This file is assumed to contain the necessary unit tests for all Java files.
+
 - All other Java files can have arbitrary names and can be located anywhere within the directory or its subdirectories; they will be processed and renamed automatically.
+
+
+- The Main.java and MainTest.java file should be self contained and should not import any other classes from other files .If you do need to use a class from your main code in the `MainTest.java` you can declare them as `public static class` and access them directly through the `Main` class. For example, if the `MainTest.java` class needs to use a class defined in `Main.java` you can declare the class in `Main.java` as `public static class ClassName` and access it in `MainTest.java` as `Main.ClassName`.
+
+- I would recommend you wrap the entire `Main.java` code int a public class called `Main` and define all the classes/methods you need as static classes/methods. This will allow you to access them directly from the `MainTest.java` file.
+
 - If you encounter permission issues on Linux/Mac, make the script executable using:
   ```bash
   chmod +x script.sh
   ```
-
-- The Main.java and MainTest.java file should be self contained and should not import any other classes from other files. This is to ensure that the script works correctly.If you do need to use a class from your main code in the MainTest.java you can declare them as public static class and access them directly through the `Main` class. For example, if the `MainTest.java` class needs to use a class defined in `Main.java` you can declare the class in `Main.java` as `public static class ClassName` and access it in `MainTest.java` as `Main.ClassName`.
+  
 
 ## Requirements
 Before running the scripts, ensure the following dependencies are installed:
